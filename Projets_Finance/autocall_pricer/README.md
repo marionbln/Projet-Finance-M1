@@ -48,7 +48,7 @@ J’augmente le nombre de simulations jusqu’à ce que le prix se stabilise.
 
 Esprit critique
 
-Quelles sont les limites de ton modèle ?
+Quelles sont les limites de mon modèle ?
 Le modèle repose sur une volatilité constante et ne prend pas en compte le smile de volatilité ni la dynamique réelle du marché. En pratique, on utiliserait plutôt un modèle à volatilité stochastique, comme Heston, calibré sur des données de marché.
 
 Qu'est-ce que jeferais avec plus de temps ?
@@ -59,3 +59,4 @@ Question finale
 Qu'est-ce j'ai appris avec ce projet ?
 
 Ce projet m’a permis de comprendre concrètement comment un produit structuré est conçu, valorisé et analysé, et comment transformer une logique financière complexe en un modèle quantitatif implémenté en code.
+
