@@ -4,4 +4,8 @@ Ce projet implémente en Python un pricer Monte-Carlo pour un produit structuré
 
 🔹 Pricer d’options par arbre binomial (C++)
 
-Ce projet développe en C++ un pricer d’options vanilles basé sur un arbre binomial recombiné, permettant de valoriser des options européennes et américaines. Le modèle repose sur une dynamique discrète du sous-jacent et sur le principe de valorisation risque-neutre, avec une rétro-propagation des payoffs depuis la maturité jusqu’à l’origine de l’arbre, intégrant l’exercice anticipé pour les options américaines. L’accent est mis sur une architecture orientée objet, la rigueur numérique et les performances du code.
+Ce projet développe en C++ un pricer d’options vanilles basé sur un arbre binomial recombiné, permettant de valoriser des options européennes. Le modèle repose sur une dynamique discrète du sous-jacent et sur le principe de valorisation risque-neutre, avec une rétro-propagation des payoffs depuis la maturité jusqu’à l’origine de l’arbres. L’accent est mis sur une architecture orientée objet, la rigueur numérique et les performances du code.
+J'ai vérifié les prix obtenu avec l'equation de parité Call Put : C-p = S0 - K*exp(-rT)
+
+
+-Marion :)
