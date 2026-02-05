@@ -36,37 +36,26 @@ Si aucun rappel n’a lieu avant la maturité, j’applique la protection condit
 Quelle est la différence entre Athena et Phoenix ?
 Dans un Autocall Athena, le coupon n’est versé qu’en cas de rappel. Dans un Autocall Phoenix, un coupon peut être versé même sans rappel, et les coupons non versés peuvent être récupérés grâce à un effet mémoire.
 
-Sensibilités
-
-Quel est l’impact de la volatilité sur mon produit ?
-Une hausse de la volatilité augmente la valeur des options implicites contenues dans le produit, notamment la PDI (put down and in) vendue par le client. Cela permet généralement de proposer des coupons plus élevés à l’émission, mais rend le produit plus risqué en cours de vie.
-
-Le produit est-il long ou short volatilité ?
-Le client est structurellement vendeur de volatilité via la PDI. Le produit est donc globalement short volatilité.
-
-Quel est l’impact des taux ?
-Une hausse des taux augmente la valeur de la partie obligataire du produit, ce qui laisse davantage de budget pour financer la partie optionnelle.
 
 Programmation (Python)
 
 Pourquoi Python ?
 Python est très utilisé en finance, facile à lire, rapide pour prototyper et dispose de bibliothèques adaptées au calcul scientifique et à la simulation numérique.
 
-Comment assures-tu la convergence Monte-Carlo ?
-J’augmente le nombre de simulations jusqu’à ce que le prix se stabilise et je peux utiliser des techniques de réduction de variance pour améliorer la précision sans augmenter excessivement le temps de calcul.
+Comment j'assure la convergence Monte-Carlo ?
+J’augmente le nombre de simulations jusqu’à ce que le prix se stabilise.
 
-Comment améliorer les performances du code ?
-On peut vectoriser les calculs avec NumPy, utiliser des méthodes de réduction de variance, paralléliser les simulations et optimiser le nombre de pas de temps.
 
 Esprit critique
 
 Quelles sont les limites de ton modèle ?
 Le modèle repose sur une volatilité constante et ne prend pas en compte le smile de volatilité ni la dynamique réelle du marché. En pratique, on utiliserait plutôt un modèle à volatilité stochastique, comme Heston, calibré sur des données de marché.
 
-Que ferais-tu si tu avais plus de temps ?
-J’ajouterais des fonctionnalités comme l’effet mémoire, l’analyse des grecques du produit, un modèle à volatilité stochastique et du backtesting sur des données historiques.
+Qu'est-ce que jeferais avec plus de temps ?
+J’ajouterais des fonctionnalités comme l’effet mémoire, l’analyse des grecques du produit ou un modèle à volatilité stochastique.
 
 Question finale
 
-Qu’as-tu appris avec ce projet ?
+Qu'est-ce j'ai appris avec ce projet ?
+
 Ce projet m’a permis de comprendre concrètement comment un produit structuré est conçu, valorisé et analysé, et comment transformer une logique financière complexe en un modèle quantitatif implémenté en code.
