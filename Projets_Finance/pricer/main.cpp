@@ -1,5 +1,5 @@
 #include <iostream>          // Charge les outils système pour l'entrée/sortie (clavier/écran)
-#include "BinomialTree.hpp"  // Charge tes propres définitions de classes (Option et BinomialTree)
+#include "BinomialTree.hpp"  // Charge mes propres définitions de classes (Option et BinomialTree)
 
 int main()                   // Définit le bloc principal où l'exécution commence obligatoirement
 {
@@ -12,7 +12,7 @@ int main()                   // Définit le bloc principal où l'exécution comm
 
     int steps = 200;         // Un 'int' est un entier ; ici, le nombre de paliers du calcul
 
-    // Instanciation : on crée des objets réels à partir du plan de construction (la classe)
+    // Instanciation : creation des objets réels à partir du plan de construction (la classe)
     // 'Option' est le type, 'call' est le nom de l'objet, 'K' et 'Call' sont les paramètres
     Option call(K, Call);    
     Option put(K, Put);      
@@ -32,3 +32,4 @@ int main()                   // Définit le bloc principal où l'exécution comm
 
     return 0;                // Renvoie le code de succès '0' au système d'exploitation
 }
+
