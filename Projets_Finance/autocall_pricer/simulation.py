@@ -1,33 +1,25 @@
-import numpy as np
+import numpy as np  # Utilisation de la bibliothèque NumPy pour les calculs matriciels
 
-def autocall_payoff(paths, params):
-    # Extraction des variables depuis le dictionnaire de paramètres
-    S0 = params["S0"]
-    coupon = params["coupon"]
-    nominal = params["nominal"]
-    barriere_rappel = params["barriere_rappel"]
-    barriere_pdi = params["barriere_pdi"]
+def simulate_paths(S0, r, sigma, T, n_steps, n_simulations):
+    # Calcul de l'intervalle de temps entre deux observations (ex: 1 an)
+    dt = T / n_steps 
+    
+    # Création d'une matrice de zéros (Lignes : scénarios, Colonnes : dates)
+    paths = np.zeros((n_simulations, n_steps + 1)) 
+    
+    # Injection du prix initial S0 dans la première colonne pour chaque scénario
+    paths[:, 0] = S0 
 
-    # Identification des dimensions de la matrice : scénarios et étapes
-    n_simulations, n_steps = paths.shape[0], paths.shape[1] - 1
-    payoffs = np.zeros(n_simulations) # Stockage du gain final pour chaque scénario
+    # Boucle itérative sur chaque étape de temps
+    for t in range(1, n_steps + 1):
+        # Génération d'un vecteur de chocs aléatoires (loi normale centrée réduite)
+        Z = np.random.normal(0, 1, n_simulations) 
+        
+        # Calcul vectorisé du prix à l'instant 't' basé sur l'instant 't-1'
+        # Application de la formule du Mouvement Brownien Géométrique
+        paths[:, t] = paths[:, t-1] * np.exp(
+            (r - 0.5 * sigma**2) * dt +  # Composante de dérive (drift)
+            sigma * np.sqrt(dt) * Z      # Composante de diffusion (volatilité)
+        )
 
-    for i in range(n_simulations): # Analyse de chaque scénario individuellement
-        for t in range(1, n_steps + 1): # Parcours chronologique de l'année 1 à 6
-            # Condition de rappel anticipé : l'indice dépasse 100% de S0
-            if paths[i, t] >= barriere_rappel * S0:
-                # Paiement du capital + coupons accumulés (6% par année écoulée)
-                payoffs[i] = nominal * (1 + coupon * t)
-                break # Arrêt immédiat du produit pour ce scénario
-        else:
-            # Cas où aucun rappel n'a eu lieu durant la vie du produit
-            ST = paths[i, -1] # Niveau final de l'indice à maturité
-            
-            # Vérification de la barrière de protection (PDI) à 60%
-            if ST >= barriere_pdi * S0:
-                payoffs[i] = nominal # Remboursement intégral du capital
-            else:
-                # Perte en capital proportionnelle à la baisse de l'indice
-                payoffs[i] = nominal * (ST / S0)
-
-    return payoffs # Liste des 50 000 gains générés
+    return paths # Renvoi de la matrice complète des trajectoires simulées
